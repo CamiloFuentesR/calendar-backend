@@ -21,7 +21,10 @@ router.post(
             .isEmail().withMessage('El email es obligatorio'),
         check('password')
             .isLength({ min: 6 }).withMessage('El password debe tener al menos 6 caracteres')
-            .matches(/\d/).withMessage('Debe contener números'),
+            .matches(/\d/).withMessage('Debe contener números')
+            .matches(/^(?=.*[A-Z])/).withMessage('Debe contener al menos una mayúscula')
+            .matches(/^(?=.*[$@$!%*?&#.$($)$-$_])/).withMessage('Debe contener al menos un carácter especial'),
+             /*  .matches( /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/).withMessage('No debe contener espacios') */
         validateField
     ],
     createUser);
@@ -33,10 +36,7 @@ router.post(
             .isEmail().withMessage('Email inválido'),
         check('password')
             .isLength({ min: 6 }).withMessage('Debe contener al menos 6 carácteres')
-            .matches(/\d/).withMessage('Debe contener números')
-            /*  .matches( /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/).withMessage('No debe contener espacios') */
-            .matches(/^(?=.*[A-Z])/).withMessage('Debe contener al menos una mayúscula')
-            .matches(/^(?=.*[$@$!%*?&#.$($)$-$_])/).withMessage('Debe contener al menos un carácter especial'),
+            .matches(/\d/).withMessage('Debe contener números'),
         validateField
     ],
     loginUser);
