@@ -7,7 +7,6 @@ exports.createEvent = async (req, res = response, next) => {
 
     //instancia de evento
     const event = new EventModel(req.body);
-    console.log(req)
     try {
         event.user = req.uid;
         const eventSave = await event.save()
