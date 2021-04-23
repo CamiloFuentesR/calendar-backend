@@ -29,7 +29,7 @@ exports.createUser = async (req, res = response) => {
 
         //generar jwt
         const token = await generateJWT(user.id, user.name)
-
+        
 
         res.status(201).json({
             ok: true,

@@ -39,6 +39,7 @@ app.use(express.json());
 //TODO:  auth / login / renew
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/events',require('./routes/events'));
+app.use('/api/session',require('./routes/session'));
 
 
 //TOD crud: eventos
